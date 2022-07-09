@@ -4,6 +4,7 @@ from sklearn import datasets
 from sklearn.ensemble import RandomForestClassifier
 
 st.write("""
+![IRIS FLOWER](https://prutor.ai/wp-content/uploads/iris-flower-classification.jpg)
 # IRIS FLOWER CLASSIFICATION
 
   Iris flower classification is a very popular machine learning project. The iris dataset contains three 
