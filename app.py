@@ -3,22 +3,11 @@ import pandas as pd
 from sklearn import datasets
 from sklearn.ensemble import RandomForestClassifier
 
-st.primaryColor="#000000"
-st.backgroundColor="#FFFFFF"
-st.secondaryBackgroundColor="#F0F2F6"
-st.textColor="#262730"
-st.font="sans serif"
-
 st.write("""
-
-
 ![IRIS FLOWER](https://prutor.ai/wp-content/uploads/iris-flower-classification.jpg)
 # IRIS FLOWER CLASSIFICATION
-
-  Iris flower classification is a very popular machine learning project. The iris dataset contains three 
-classes of flowers, Versicolor, Setosa, Virginica, and each class contains 4 features, ‘Sepal length’, 
-‘Sepal width’, ‘Petal length’, ‘Petal width’. The aim of the iris flower classification is to predict 
-flowers based on their specific features.
+  The iris dataset contains three classes of flowers, Versicolor, Setosa, Virginica, and each class contains 4 features, ‘Sepal length’, 
+‘Sepal width’, ‘Petal length’, ‘Petal width’.
 """)
 
 
@@ -38,3 +27,33 @@ def user_input_features():
     return features
 
 df = user_input_features()
+
+iris = datasets.load_iris()
+X = iris.data
+Y = iris.target
+
+clf = RandomForestClassifier()
+clf.fit(X, Y)
+
+prediction = clf.predict(df)
+prediction_proba = clf.predict_proba(df)
+
+st.subheader('Flower Classification labels and Index')
+st.write("""
+| Setosa: 0 | Versicolor: 1 | Virginica: 2 |
+|-----------|---------------|--------------|
+""")
+
+st.write("""
+
+### Predicted output: %(prediction)s
+Probability:
+| Setosa: 0 | Versicolor: 1 | Virginica: 2 |
+|-----------|---------------|--------------|
+|  %(p1)s   |     %(p2)s    |     %(p3)s   |
+""" % {
+  "prediction": iris.target_names[prediction][0].upper(),
+  "p1": prediction_proba[0][0],
+  "p2": prediction_proba[0][1],
+  "p3": prediction_proba[0][2]
+})
