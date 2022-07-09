@@ -3,8 +3,10 @@ import pandas as pd
 from sklearn import datasets
 from sklearn.ensemble import RandomForestClassifier
 
+html_string = '<img src="https://prutor.ai/wp-content/uploads/iris-flower-classification.jpg" height="220px" width="80%" align="center" />'
+st.markdown(html_string, unsafe_allow_html=True)
+
 st.write("""
-![IRIS FLOWER](https://prutor.ai/wp-content/uploads/iris-flower-classification.jpg)
 # IRIS FLOWER CLASSIFICATION
   The iris dataset contains three classes of flowers, Versicolor, Setosa, Virginica, and each class contains 4 features, ‘Sepal length’, 
 ‘Sepal width’, ‘Petal length’, ‘Petal width’.
